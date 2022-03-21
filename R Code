@@ -158,7 +158,7 @@ while (power<lowergoal||power>uppergoal){ #while loop so code repeats until powe
   }
 } 
 
-#This will only work if you run through the inside of the function as it looks at a singular run through instead of a stored vector of p values.
+
 ##side by side histogram of p and m treatments##
 phist<-hist(d$newvalue[d$group==1&d$status==1], breaks = seq(min(d$newvalue), max(d$newvalue), length.out = 11)) #establishes ten even bins, uses only non-censored people in histograms
 mhist<-hist(d$newvalue[d$group==2&d$status==1], breaks = seq(min(d$newvalue), max(d$newvalue), length.out = 11))
