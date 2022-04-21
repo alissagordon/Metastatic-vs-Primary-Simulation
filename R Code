@@ -110,7 +110,7 @@ trials<-function()
   kmcurve<-survfit(Surv(d$newvalue, d$status)~group, data=d)  #creates curve model of newvalue, censored by status, and sorted by group
   ggsurvplot(kmcurve, pval=FALSE, break.x.by=1, surv.median.line = "v", risk.table = "nrisk_cumevents", cumcensor=TRUE, xscale=1, xlim=c(0,yearsoftrial))
   survdiff(Surv(d$newvalue)~group) #plots the curve and shows risk, event, and censor table by year
-  survdifffxn<- survdiff(Surv(d$newvalue)~group)
+  survdifffxn<- survdiff(Surv(d$newvalue,d$status)~d$group) #only one group error
   p.val <- 1 - pchisq(survdifffxn$chisq, length(survdifffxn$n) - 1) #finds p value using chi square
   return(p.val) #returns p value for later storage
 }  
