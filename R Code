@@ -147,6 +147,7 @@ while (power<lowergoal||power>uppergoal){ #while loop so code repeats until powe
   #if power is too high, Nincrement reduced to 90% original size and subtracted from sample size, new power is found
     Nincrement<-Nincrement%/%(10/9) #%/% fixes issue of rounding 
     n<-n-Nincrement
+    if(Nincrement < 2) { Nincrement = 10}   
     total<-2*n
     count<-(1:total)
     d<-data.frame(cbind( count, enrollment, group, survival,newvalue, status1, status2, status, time))
